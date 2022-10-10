@@ -1,15 +1,11 @@
 import "./App.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import { db } from "./firebase";
-import {
-  addDoc,
-  collection,
-  onSnapshot,
-  query,
- } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, query } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
+import TodoListItem from "./Todo";
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -59,7 +55,7 @@ function App() {
       </form>
       <div>
         {todos.map((todo) => (
-          <p>{todo.todo}</p>
+          <TodoListItem todo={todo.todo} progres={todo.progres} id={todo.id} />
         ))}
       </div>
     </div>
