@@ -1,5 +1,5 @@
 import { Button, ListItem, ListItemText } from "@mui/material";
-import { id, doc, collection, updateDoc, deleteDoc } from "firebase/firestore";
+import {  doc,  updateDoc, deleteDoc, } from "firebase/firestore";
 import React from "react";
 import { db } from "./firebase";
 
@@ -8,17 +8,27 @@ export default function TodoListItem({ todo, progres, id }) {
     deleteDoc(doc(db, "todos", id));
   }
 
-  function toggleProgres() {}
+  function ukonczone() {
+
+    const docRef = doc(db, "todos", id);
+
+    updateDoc(docRef, {
+      progres: !progres,
+    });
+  }
+
+
 
   return (
     <div style={{ display: " flex" }}>
       <ListItem>
         <ListItemText
           primary={todo}
+          
           secondary={progres ? "zrobione" : "niezrobine"}
         />
       </ListItem>
-      <Button onClick={toggleProgres}>Zrobione</Button>
+      <Button onClick={ukonczone}>Zrobione</Button>
       <Button onClick={usuwanie}>Usuń</Button>
       {/* <p>{todo}</p> */}
     </div>
