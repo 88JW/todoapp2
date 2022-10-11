@@ -8,18 +8,16 @@ import { addDoc, collection, onSnapshot, query } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import TodoListItem from "./Todo";
 
-import Time from "./time";
-
-
-
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function App() {
-
   const [todos, setTodos] = React.useState([]);
 
   const [todoInput, setTodoInput] = useState("");
 
- 
+  const [timeValue, settimeValue] = React.useState("");
 
   React.useEffect(() => {
     const q = query(collection(db, "todos"));
@@ -39,11 +37,12 @@ function App() {
     addDoc(collection(db, "todos"), {
       todo: todoInput,
       progres: false,
-      addtime:  serverTimestamp(),
+      time: timeValue,
+      addtime: serverTimestamp(),
     });
 
     setTodoInput("");
-   
+    settimeValue("");
   }
 
   return (
@@ -60,11 +59,16 @@ function App() {
           variant="standard"
         />
 
-        
-          <Time/>
-      
-
-     
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Deadline"
+            value={timeValue}
+            onChange={(newValue) => {
+              settimeValue(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
 
         <Button type="submit" variant="contained" onClick={addTask}>
           Dodaj
@@ -74,7 +78,7 @@ function App() {
         {todos.map((todo) => (
           <TodoListItem
             todo={todo.todo}
-            data={todo.data}
+            time={todo.time}
             addtime={todo.addtime}
             progres={todo.progres}
             id={todo.id}

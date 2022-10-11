@@ -3,7 +3,7 @@ import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "./firebase";
 
-export default function TodoListItem({ todo, data, addtime, progres, id }) {
+export default function TodoListItem({ todo, time, addtime,  progres, id }) {
   function usuwanie() {
     deleteDoc(doc(db, "todos", id));
   }
@@ -20,7 +20,7 @@ export default function TodoListItem({ todo, data, addtime, progres, id }) {
     <div style={{ display: " flex" }}>
       <ListItem>
         <ListItemText
-          primary={todo}
+          primary={todo + time}
           secondary={progres ? "zrobione" : "niezrobine"}
         />
       </ListItem>
