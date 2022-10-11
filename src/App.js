@@ -2,15 +2,24 @@ import "./App.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
+
 import { db } from "./firebase";
-import {  addDoc, collection, onSnapshot, query,  } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, query } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import TodoListItem from "./Todo";
 
+import Time from "./time";
+
+
+
+
 function App() {
+
   const [todos, setTodos] = React.useState([]);
 
   const [todoInput, setTodoInput] = useState("");
+
+ 
 
   React.useEffect(() => {
     const q = query(collection(db, "todos"));
@@ -30,10 +39,11 @@ function App() {
     addDoc(collection(db, "todos"), {
       todo: todoInput,
       progres: false,
-      addtime: serverTimestamp(),
+      addtime:  serverTimestamp(),
     });
 
     setTodoInput("");
+   
   }
 
   return (
@@ -49,13 +59,26 @@ function App() {
           }}
           variant="standard"
         />
+
+        
+          <Time/>
+      
+
+     
+
         <Button type="submit" variant="contained" onClick={addTask}>
           Dodaj
         </Button>
       </form>
       <div>
         {todos.map((todo) => (
-          <TodoListItem todo={todo.todo} progres={todo.progres} id={todo.id} />
+          <TodoListItem
+            todo={todo.todo}
+            data={todo.data}
+            addtime={todo.addtime}
+            progres={todo.progres}
+            id={todo.id}
+          />
         ))}
       </div>
     </div>
