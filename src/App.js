@@ -45,6 +45,13 @@ function App() {
     settimeValue("");
   }
 
+
+
+const tablica = [ ... todos].sort 
+
+
+
+
   return (
     <div>
       <h1>Test Aplikacji 2</h1>
@@ -75,18 +82,21 @@ function App() {
         </Button>
       </form>
       <div>
-        {todos.map((todo) => (
-          <TodoListItem
-            todo={todo.todo}
-            time={todo.time}
-            addtime={todo.addtime}
-            progres={todo.progres}
-            id={todo.id}
-          />
-        ))}
+        {todos.sort((a,b) => a.time > b.time ? 1 : -1).map((todo) => (
+            <TodoListItem
+              todo={todo.todo}
+              time={todo.time}
+              addtime={todo.addtime}
+              progres={todo.progres}
+              id={todo.id}
+            />
+          ))}
       </div>
     </div>
   );
 }
 
 export default App;
+
+
+//

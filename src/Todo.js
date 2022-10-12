@@ -22,12 +22,13 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
     <div style={{ display: " flex" }}>
       <ListItem>
         <ListItemText
-          primary={todo + " - " +  serwvertime}
+          primary={todo +" - " + serwvertime}
           secondary={progres ? "zrobione" : "niezrobine"}
         />
       </ListItem>
       <Button onClick={ukonczone}>Zrobione</Button>
       <Button onClick={usuwanie}>Usuń</Button>
+
       {/* <p>{todo}</p> */}
     </div>
   );
