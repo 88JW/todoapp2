@@ -44,14 +44,6 @@ function App() {
     setTodoInput("");
     settimeValue("");
   }
-
-
-
-const tablica = [ ... todos].sort 
-
-
-
-
   return (
     <div>
       <h1>Test Aplikacji 2</h1>
