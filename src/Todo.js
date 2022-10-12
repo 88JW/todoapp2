@@ -3,7 +3,7 @@ import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "./firebase";
 
-export default function TodoListItem({ todo, time, addtime,  progres, id }) {
+export default function TodoListItem({ todo, time, addtime, progres, id }) {
   function usuwanie() {
     deleteDoc(doc(db, "todos", id));
   }
@@ -16,11 +16,13 @@ export default function TodoListItem({ todo, time, addtime,  progres, id }) {
     });
   }
 
+  const serwvertime = time.toDate().toLocaleDateString();
+
   return (
     <div style={{ display: " flex" }}>
       <ListItem>
         <ListItemText
-          primary={todo + time}
+          primary={todo + " - " +  serwvertime}
           secondary={progres ? "zrobione" : "niezrobine"}
         />
       </ListItem>
