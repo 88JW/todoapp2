@@ -1,0 +1,15 @@
+.todo-item-contener{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  border-bottom: 1px solid rgb(124, 124, 124);
+}
+
+.button-conteiner{
+  margin-right: 10px;
+  display: flex;
+    
+}
+.button-list-item {
+  height: 50%;
+  }

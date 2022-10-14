@@ -44,11 +44,14 @@ function App() {
     setTodoInput("");
     settimeValue("");
   }
+
   return (
-    <div>
-      <h1>Test Aplikacji 2</h1>
-      <form>
+    <div className="app-conteiner">
+      <h1>Aplikacja Zadaniowa</h1>
+      <h5>z wykorzystaniem firebase</h5>
+      <form className="formconteiner">
         <TextField
+          className="textfield-todo"
           id="standard-basic"
           label="Wprowadź zadanie..."
           value={todoInput}
@@ -60,6 +63,7 @@ function App() {
 
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
+            className="datepickertodo"
             label="Deadline"
             value={timeValue}
             onChange={(newValue) => {
@@ -69,12 +73,19 @@ function App() {
           />
         </LocalizationProvider>
 
-        <Button type="submit" variant="contained" onClick={addTask}>
+        <Button
+          className="button-submit"
+          type="submit"
+          variant="contained"
+          onClick={addTask}
+        >
           Dodaj
         </Button>
       </form>
       <div>
-        {todos.sort((a,b) => a.time > b.time ? 1 : -1).map((todo) => (
+        {todos
+          .sort((a, b) => (a.time > b.time ? 1 : -1))
+          .map((todo) => (
             <TodoListItem
               todo={todo.todo}
               time={todo.time}
@@ -89,6 +100,5 @@ function App() {
 }
 
 export default App;
-
 
 //

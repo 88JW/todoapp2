@@ -1,3 +1,4 @@
+import "./todo.css";
 import { Button, ListItem, ListItemText } from "@mui/material";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import React from "react";
@@ -19,17 +20,32 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
   const serwvertime = time.toDate().toLocaleDateString();
 
   return (
-    <div style={{ display: " flex" }}>
-      <ListItem>
+    <div className="todo-item-contener">
+      <ListItem className="ListItem">
         <ListItemText
-          primary={todo +" - " + serwvertime}
-          secondary={progres ? "zrobione" : "niezrobine"}
+          className="ListItemText"
+          primary={todo + " - " + serwvertime}
+          secondary={progres ? "Zrobione" : "Niezdrobione"}
         />
       </ListItem>
-      <Button onClick={ukonczone}>Zrobione</Button>
-      <Button onClick={usuwanie}>Usuń</Button>
-
-      {/* <p>{todo}</p> */}
+<div className="button-conteiner">
+      <Button
+        className="button-list-item"
+        color="success"
+        variant="outlined"
+        onClick={ukonczone}
+      >
+        Zrobione
+      </Button>
+      <Button
+        className="button-list-item"
+        color="error"
+        variant="outlined"
+        onClick={usuwanie}
+      >
+        Usuń
+      </Button>
+      </div>
     </div>
   );
 }
