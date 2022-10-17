@@ -37,10 +37,11 @@ function App() {
     addDoc(collection(db, "todos"), {
       todo: todoInput,
       progres: false,
-      time: timeValue,
+      time: timeValue ? timeValue : serverTimestamp(),
       addtime: serverTimestamp(),
     });
 
+    
     setTodoInput("");
     settimeValue("");
   }
@@ -72,15 +73,25 @@ function App() {
             renderInput={(params) => <TextField {...params} />}
           />
         </LocalizationProvider>
-
-        <Button
-          className="button-submit"
-          type="submit"
-          variant="contained"
-          onClick={addTask}
-        >
-          Dodaj
-        </Button>
+        {timeValue && todoInput ? (
+          <Button
+            className="button-submit"
+            type="submit"
+            variant="contained"
+            onClick={addTask}
+          >
+            Dodaj
+          </Button>
+        ) : (
+          <Button
+            className="button-submit"
+            type="submit"
+            variant="contained"
+            color="error"
+          >
+            Wprowadź datę i zadanie
+          </Button>
+        )}
       </form>
       <div>
         {todos
@@ -88,7 +99,7 @@ function App() {
           .map((todo) => (
             <TodoListItem
               todo={todo.todo}
-              time={todo.time}
+              time={todo.time ? todo.time : null}
               addtime={todo.addtime}
               progres={todo.progres}
               id={todo.id}

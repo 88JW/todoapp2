@@ -25,7 +25,7 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
         <ListItemText
           className="ListItemText"
           primary={todo + " - " + serwvertime}
-          secondary={progres ? "Zrobione" : "Niezdrobione"}
+          secondary={progres ? "Zrobione" : "Niezrobione"}
         />
       </ListItem>
 <div className="button-conteiner">
