@@ -13,3 +13,13 @@
 .button-list-item {
   height: 50%;
   }
+
+.zrobione{
+  color: green;
+  font-weight: 700;
+}
+
+.niezrobione{
+  color: brown;
+  font-weight: 700;
+}

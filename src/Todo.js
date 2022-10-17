@@ -25,26 +25,33 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
         <ListItemText
           className="ListItemText"
           primary={todo + " - " + serwvertime}
-          secondary={progres ? "Zrobione" : "Niezrobione"}
+          secondary={
+            progres ? (
+              <span className="zrobione">Zrobione</span>
+            ) : (
+              <span className="niezrobione">Niezrobione</span>
+            )
+          }
         />
       </ListItem>
-<div className="button-conteiner">
-      <Button
-        className="button-list-item"
-        color="success"
-        variant="outlined"
-        onClick={ukonczone}
-      >
-        Zrobione
-      </Button>
-      <Button
-        className="button-list-item"
-        color="error"
-        variant="outlined"
-        onClick={usuwanie}
-      >
-        Usuń
-      </Button>
+      <div className="button-conteiner">
+        <Button
+          className="button-list-item"
+          color="success"
+          variant="outlined"
+          onClick={ukonczone}
+        >
+          {progres ? "Niezrobione" : "Zrobione"}
+         
+        </Button>
+        <Button
+          className="button-list-item"
+          color="error"
+          variant="outlined"
+          onClick={usuwanie}
+        >
+          Usuń
+        </Button>
       </div>
     </div>
   );
