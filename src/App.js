@@ -41,10 +41,16 @@ function App() {
       addtime: serverTimestamp(),
     });
 
-    
     setTodoInput("");
     settimeValue("");
   }
+
+
+  function costomAlert (){
+    alert("Musisz wprowadzić zadanie i datę");
+  }
+
+
 
   return (
     <div className="app-conteiner">
@@ -88,6 +94,7 @@ function App() {
             type="submit"
             variant="contained"
             color="error"
+            onClick={costomAlert}
           >
             Wprowadź datę i zadanie
           </Button>
