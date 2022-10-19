@@ -45,12 +45,9 @@ function App() {
     settimeValue("");
   }
 
-
-  function costomAlert (){
+  function costomAlert() {
     alert("Musisz wprowadzić zadanie i datę");
   }
-
-
 
   return (
     <div className="app-conteiner">

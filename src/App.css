@@ -5,12 +5,12 @@
 }
 
 .app-conteiner {
-  background-color:rgb(251, 251, 251);
+  background-color: rgb(251, 251, 251);
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
- box-shadow: 4px 4px 20px 0px rgba(150, 150, 150, 1);
+  box-shadow: 4px 4px 20px 0px rgba(150, 150, 150, 1);
   margin-top: 40px;
   margin-bottom: 40px;
 }

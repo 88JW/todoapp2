@@ -3,6 +3,9 @@ import { Button, ListItem, ListItemText } from "@mui/material";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "./firebase";
+import DeleteIcon from "@mui/icons-material/Delete";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function TodoListItem({ todo, time, addtime, progres, id }) {
   function usuwanie() {
@@ -41,8 +44,8 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
           variant="outlined"
           onClick={ukonczone}
         >
-          {progres ? "Niezrobione" : "Zrobione"}
-         
+          
+          {progres ?  <CloseIcon></CloseIcon> : <TaskAltIcon></TaskAltIcon> }
         </Button>
         <Button
           className="button-list-item"
@@ -50,6 +53,7 @@ export default function TodoListItem({ todo, time, addtime, progres, id }) {
           variant="outlined"
           onClick={usuwanie}
         >
+          <DeleteIcon className="Icon"></DeleteIcon>
           Usuń
         </Button>
       </div>
